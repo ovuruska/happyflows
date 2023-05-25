@@ -13,17 +13,13 @@
   "license": "ISC",
   "dependencies": {
     "configstore": "^6.0.0",
-    "graceful-fs": "^4.2.11",
     "inquirer": "^7.3.3",
     "loading-cli": "^1.1.0",
     "openai": "^3.2.1",
-    "typescript": "^5.0.4",
-    "write-file-atomic": "^5.0.1",
-    "xdg-basedir": "^5.1.0",
     "yargs": "^17.7.2"
   },
   "bin": {
-    "happyflow": "src/index.js"
+    "happyflows": "src/index.js"
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.21.5",
