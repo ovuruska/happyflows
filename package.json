@@ -23,7 +23,7 @@
     "yargs": "^17.7.2"
   },
   "bin": {
-    "happyflow": "src/index.js"
+    "happyflows": "src/index.js"
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.21.5",
