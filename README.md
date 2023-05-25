@@ -38,10 +38,49 @@ This will start a prompt asking you to explain your project in a few words, for 
 
 ```bash
 ? Explain your program in a few words:  
-Implement three Flask microservices: user, books and genre. They should be backed by PostgreSQL.
+Flask microservices: users, books and genres. They should be backed by PostgreSQL. Terraform and Kubernetes infra. Kafka as event broker.
 ```
 
 Based on your input, HappyFlows will generate a relevant project structure to get you started!
+Resulting structure will be like 
+```bash
+.
+├── books
+│   ├── Dockerfile
+│   ├── __init__.py
+│   ├── k8s-deployment.yaml
+│   ├── k8s-service.yaml
+│   ├── main.py
+│   └── requirements.txt
+├── genres
+│   ├── Dockerfile
+│   ├── __init__.py
+│   ├── genre_updated.avsc
+│   ├── k8s-deployment.yaml
+│   ├── k8s-resources
+│   ├── k8s-service.yaml
+│   ├── kafka-configmap.yaml
+│   ├── kafka-deployment.yaml
+│   ├── kafka-schemas
+│   ├── kafka-service.yaml
+│   ├── main.py
+│   ├── main.tf
+│   ├── namespace.yaml
+│   ├── postgresql-sts.yaml
+│   ├── requirements.txt
+│   ├── terraform
+│   ├── user_created.avsc
+│   └── variables.tf
+└── users
+    ├── Dockerfile
+    ├── __init__.py
+    ├── k8s-deployment.yaml
+    ├── k8s-service.yaml
+    ├── main.py
+    └── requirements.txt
+
+```
+
 
 ## Contributing
 
