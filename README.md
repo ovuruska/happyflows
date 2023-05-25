@@ -31,7 +31,7 @@ npm install -g happyflows
 After successful installation, you can start a new project using HappyFlows by entering the following command:
 
 ```bash
-happyflows
+happyflow
 ```
 
 This will start a prompt asking you to explain your project in a few words, for example:
