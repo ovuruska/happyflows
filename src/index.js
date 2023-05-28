@@ -10,6 +10,8 @@ import {loadingArray} from "./loading.js";
 import {parseActions} from "./parse.js";
 import fs from "fs";
 import {executeActions} from "./happyflow.js";
+import {softwareEngineerFill} from "./prompts/fill.prompt.js";
+import {parseFill} from "./parse-fill.js";
 
 const config = new ConfigStore('happyflow');
 const load = loading({
@@ -41,7 +43,6 @@ yargs(hideBin(process.argv))
 			load.start();
 			const openAiService = new OpenaiService(config.get('apiKey'));
 			response = await openAiService.getCompletion(messages);
-			fs.writeFileSync('response.json', response.toString(), null, 2);
 
 
 		} catch (e) {
@@ -49,7 +50,7 @@ yargs(hideBin(process.argv))
 			config.delete('apiKey');
 			process.exit(0);
 
-			console.error("Problem occured with OpenAI API key")
+			console.error("Problem occurred with OpenAI API key")
 		} finally {
 			load.stop();
 
@@ -70,6 +71,51 @@ yargs(hideBin(process.argv))
 	}, (argv) => {
 		const actions = parseActions(fs.readFileSync(argv.actionFile, 'utf8'));
 		executeActions(actions);
+
+	})
+	.command('fill', 'fill a folder with files and subfolders.', {
+	},async (argv)=>{
+		const openAiKey = config.get('apiKey');
+		if (!openAiKey) {
+			const {apiKey} = await inquirer.prompt([{
+				name: 'apiKey', type: 'input', message: 'Enter your OpenAI API key: ',
+			}]);
+			config.set('apiKey', apiKey);
+
+		}
+		// Get first argument
+		const folderName = argv._[1] || ".";
+		const {program} = await inquirer.prompt([{
+			name: 'program', type: 'input', message: 'Explain your program in a few words: ',
+		},]);
+		const messages = [{
+			role: "system", content: softwareEngineerFill
+		}, {
+			role: "user", content: program
+		}];
+		let response = null;
+		try {
+			load.start();
+			const openAiService = new OpenaiService(config.get('apiKey'));
+			response = await openAiService.getCompletion(messages);
+			fs.writeFileSync('response.json', response.toString(), null, 2);
+
+
+		} catch (e) {
+			config.delete('apiKey');
+			process.exit(0);
+
+			console.error("Problem occured with OpenAI API key")
+		} finally {
+			load.stop();
+		}
+		const creatingFilesLoad = loading({
+			frames: loadingArray, text: "Bootstrapping project files", interval: 150,
+		});
+		creatingFilesLoad.start();
+		const actions = parseFill(response);
+		executeActions(actions);
+		creatingFilesLoad.stop();
 
 	})
 	.option('verbose', {

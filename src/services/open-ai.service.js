@@ -8,7 +8,7 @@ export class OpenaiService {
 		this.openaiClient = new OpenAIApi(this.configuration);
 
 	}
-	async getCompletion(messages,model = "gpt-3.5-turbo",temperature = 1,maxTries  = 5) {
+	async getCompletion(messages,model = "gpt-3.5-turbo",temperature = 0,maxTries  = 5) {
 		try {
 			const completion = await this.openaiClient.createChatCompletion(
 				{

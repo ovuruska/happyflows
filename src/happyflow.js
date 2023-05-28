@@ -5,9 +5,13 @@ export function executeActions(actions) {
 
 	for (const actionObject of actions) {
 		const { action, actionInput } = actionObject;
+		const filePath = `${root}/${actionInput.path}`;
+		const content = `${actionInput.content}`;
+		const folderPath = `${actionInput.path}`;
+
+
 		switch (action) {
 			case 'create_folder':
-				const folderPath = `${actionInput.path}`;
 				create_folder(folderPath);
 				break;
 
@@ -16,9 +20,10 @@ export function executeActions(actions) {
 				change_directory(newPath);
 				root = newPath;
 				break;
-
+			case 'write_file':
+				create_file(filePath, content);
+				break;
 			case 'create_file':
-				const filePath = `${actionInput.path}`;
 				create_file(filePath);
 				break;
 			case 'run_command':

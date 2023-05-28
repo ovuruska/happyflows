@@ -1,12 +1,24 @@
 import fs from "fs";
 import {exec} from "child_process";
 
-export function create_file(path) {
-	fs.writeFileSync(path, '');
+export function create_file(path,content = '') {
+	if(fs.existsSync(path)){
+		fs.unlinkSync(path);
+	}
+	fs.mkdirSync(path.substring(0,path.lastIndexOf('/')),{
+		force: true,
+		recursive:true
+	});
+	fs.writeFileSync(path, content,{
+		force: true,
+		recursive:true
+	});
 }
 
 export function create_folder(path) {
-	fs.mkdirSync(path);
+	fs.mkdirSync(path,{
+		force: true,
+	});
 }
 
 export function change_directory(path) {
