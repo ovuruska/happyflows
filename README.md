@@ -1,7 +1,7 @@
 # HappyFlows: Prompt-Driven Project Bootstrapping
 [![NPM](https://nodei.co/npm/happyflows.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/happyflows/)
 
-![happyflow_logo](docs/logo.png)
+![happyflow_logo](https://github.com/ovuruska/happyflows/blob/a6f86fe68cbb22bc5fc3e996595be90dfbb43fa6/docs/logo.png)
 
 HappyFlows is a dynamic, prompt-based project bootstrapping library designed to streamline the project initiation process. It uses NodeJS and the command-line interface (CLI) to intuitively guide you through the setup process for your new projects, saving you time and effort.
 
