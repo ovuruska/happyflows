@@ -1,6 +1,6 @@
 {
   "name": "happyflows",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "HappyFlows: An intuitive, prompt-driven project bootstrapping CLI tool developed in NodeJS, designed to simplify and streamline your project initialization process.",
   "type": "module",
   "scripts": {

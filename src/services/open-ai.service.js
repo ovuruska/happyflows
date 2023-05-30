@@ -13,7 +13,8 @@ export class OpenaiService {
 			const completion = await this.openaiClient.createChatCompletion(
 				{
 					model,
-					messages
+					messages,
+					temperature,
 				});
 			return completion.data.choices[0].message.content;
 

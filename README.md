@@ -1,4 +1,7 @@
-# HappyFlows: Prompt-Driven Project Bootstrapping
+
+    ├── __init__.py
+    ├── k8s-deployment.yaml
+    ├── k8s-service.yaml# HappyFlows: Prompt-Driven Project Bootstrapping
 
 ![happyflow_logo](docs/logo.png)
 
@@ -42,7 +45,7 @@ Flask microservices: users, books and genres. They should be backed by PostgreSQ
 ```
 
 Based on your input, HappyFlows will generate a relevant project structure to get you started!
-Resulting structure will be like 
+Resulting structure will be like
 ```bash
 .
 ├── books
@@ -73,9 +76,6 @@ Resulting structure will be like
 │   └── variables.tf
 └── users
     ├── Dockerfile
-    ├── __init__.py
-    ├── k8s-deployment.yaml
-    ├── k8s-service.yaml
     ├── main.py
     └── requirements.txt
 

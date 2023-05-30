@@ -5,12 +5,9 @@ export const parseActions = (actionsText) => {
 	let currentThought = null;
 	let currentAction = null;
 	let currentActionInput = null;
-	let root = ""
 	for (let line of lines) {
 		line = line.trim();
-		if(line.startsWith('Root: ')){
-			root = line.substring('Root: '.length).trim();
-		} else if (line.startsWith('Thought: ')) {
+		if (line.startsWith('Thought: ')) {
 			currentThought = line.substring('Thought: '.length).trim();
 		} else if (line.startsWith('Action: ')) {
 			currentAction = line.substring('Action: '.length).trim();
@@ -18,19 +15,17 @@ export const parseActions = (actionsText) => {
 			const actionInput = line.substring('Action Input: '.length).trim();
 			currentActionInput = JSON.parse(actionInput);
 		}
-			if(root !== null && currentThought !== null && currentAction !== null && currentActionInput !== null){
+			if(currentThought !== null && currentAction !== null && currentActionInput !== null){
 				const actionObj = {
 					thought: currentThought,
 					action: currentAction,
 					actionInput: currentActionInput,
-					root
 				};
 
 				actions.push(actionObj);
 				currentThought = null;
 				currentAction = null;
 				currentActionInput = null;
-				root = null
 			}
 	}
 
