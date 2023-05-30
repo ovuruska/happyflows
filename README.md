@@ -1,4 +1,5 @@
 # HappyFlows: Prompt-Driven Project Bootstrapping
+[![NPM](https://nodei.co/npm/happyflows.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/happyflows/)
 
 ![happyflow_logo](docs/logo.png)
 
