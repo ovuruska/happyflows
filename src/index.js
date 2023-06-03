@@ -98,8 +98,6 @@ yargs(hideBin(process.argv))
 			load.start();
 			const openAiService = new OpenaiService(config.get('apiKey'));
 			response = await openAiService.getCompletion(messages);
-			fs.writeFileSync('response.json', response.toString(), null, 2);
-
 
 		} catch (e) {
 			config.delete('apiKey');
