@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "node src/index.js",
-    "test": "jest",
-    "test:cov": "jest --coverage"
+    "test": "jest --passWithNoTests",
+    "test:cov": "jest --passWithNoTests --coverage"
   },
   "keywords": [],
   "author": "",
