@@ -1,15 +1,14 @@
-import {change_directory, create_file, create_folder, run_command} from "./api.js";
+import {change_directory, create_file, create_folder, read_file, run_command} from "./api.js";
 
 export function executeActions(actions) {
 	let root = '.';
+	const response = [];
 
 	for (const actionObject of actions) {
 		const { action, actionInput } = actionObject;
 		const filePath = `${root}/${actionInput.path}`;
 		const content = `${actionInput.content}`;
 		const folderPath = `${actionInput.path}`;
-
-
 		switch (action) {
 			case 'create_folder':
 				create_folder(folderPath);
@@ -30,11 +29,20 @@ export function executeActions(actions) {
 				const command = `${actionInput.command}`;
 				run_command(command);
 				break;
+			case  'read_file':
+				const fileContent =  read_file(filePath);
+				response.push([{
+					"action": action,
+					"actionInput": actionInput,
+					"content": fileContent
+				}])
+
 
 			default:
 				console.log('Unknown action type:', action);
 		}
 	}
+	return response;
 }
 
 

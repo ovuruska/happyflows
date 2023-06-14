@@ -13,9 +13,12 @@
   "license": "ISC",
   "dependencies": {
     "configstore": "^6.0.0",
+    "glob": "^10.2.7",
     "inquirer": "^7.3.3",
+    "langchain": "0.0.95",
     "loading-cli": "^1.1.0",
     "openai": "^3.2.1",
+    "vectra": "^0.1.2",
     "yargs": "^17.7.2"
   },
   "bin": {

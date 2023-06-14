@@ -25,6 +25,14 @@ export function change_directory(path) {
 	process.chdir(path);
 }
 
+export function read_file(path){
+	let content = "";
+	if(fs.existsSync(path)){
+		content = fs.readFileSync(path, 'utf8');
+	}
+	return content;
+}
+
 export function run_command(command) {
 	exec(command, (error, stdout, stderr) => {
 		if (error) {
