@@ -1,4 +1,4 @@
-# HappyFlows: Prompt-Driven Project Bootstrapping
+# HappyFlows: Prompt-Driven Code Generation
 [![NPM](https://nodei.co/npm/happyflows.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/happyflows/)
 
 ![happyflow_logo](https://github.com/ovuruska/happyflows/blob/a6f86fe68cbb22bc5fc3e996595be90dfbb43fa6/docs/logo.png)
@@ -43,7 +43,7 @@ Flask microservices: users, books and genres. They should be backed by PostgreSQ
 ```
 
 Based on your input, HappyFlows will generate a relevant project structure to get you started!
-Resulting structure will be like 
+Resulting structure will be like
 ```bash
 .
 ├── books
