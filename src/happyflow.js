@@ -36,8 +36,8 @@ export function executeActions(actions) {
 					"actionInput": actionInput,
 					"content": fileContent
 				}])
-
-
+			case 'terminate':
+				break;
 			default:
 				console.log('Unknown action type:', action);
 		}

@@ -67,6 +67,7 @@ Action Input: { "path": "./flask_microservices/requirements.txt" }
 ---
 flask==2.0.2
 ---
+
 Thought: Kubernetes deployment would require a service and a deployment specification in yaml format.
 Action: write_file
 Action Input: { "path": "./flask_microservices/flask-app-service.yaml" }
@@ -83,6 +84,7 @@ spec:
 selector:
 	app: flask-app
 ---
+
 Thought: Now let's create the deployment specification.
 Action: write_file
 Action Input: { "path": "./flask_microservices/flask-app-deployment.yaml" }

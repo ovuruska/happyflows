@@ -10,6 +10,7 @@ import {executeActions} from "./happyflow.js";
 import {loginCommand} from "./commands/login.js";
 import ConfigStore from "configstore";
 import {VectorDbService} from "./services/vector-db.service.js";
+import fs from "fs";
 
 const config = new ConfigStore('happyflow');
 
@@ -36,7 +37,7 @@ yargs(hideBin(process.argv))
 
 		let response = null;
 		try {
-			load.start();
+			load.start("Implementing the code.");
 			const openAiService = new OpenaiService(config.get('apiKey'));
 			const embedding = await openAiService.getEmbedding(program);
 			const {item:{

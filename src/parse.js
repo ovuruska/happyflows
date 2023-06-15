@@ -1,32 +1,44 @@
-export const parseActions = (actionsText) => {
-	const lines = actionsText.split('\n').filter(line => line.trim() !== '');
+import * as path from "path";
+
+export const parseActions = (response,root = ".") => {
+	const lines = response.split('\n').filter(line => line.trim() !== '');
 	const actions = [];
 
 	let currentThought = null;
 	let currentAction = null;
 	let currentActionInput = null;
+	let contentFlag = false;
 	for (let line of lines) {
-		line = line.trim();
 		if (line.startsWith('Thought: ')) {
-			currentThought = line.substring('Thought: '.length).trim();
+			currentThought = line.trim().substring('Thought: '.length).trim();
 		} else if (line.startsWith('Action: ')) {
-			currentAction = line.substring('Action: '.length).trim();
+			currentAction = line.trim().substring('Action: '.length).trim();
 		} else if (line.startsWith('Action Input: ')) {
-			const actionInput = line.substring('Action Input: '.length).trim();
+			const actionInput = line.trim().substring('Action Input: '.length).trim();
 			currentActionInput = JSON.parse(actionInput);
-		}
-			if(currentThought !== null && currentAction !== null && currentActionInput !== null){
-				const actionObj = {
-					thought: currentThought,
-					action: currentAction,
-					actionInput: currentActionInput,
-				};
-
-				actions.push(actionObj);
-				currentThought = null;
-				currentAction = null;
-				currentActionInput = null;
+			if(currentActionInput.path){
+				currentActionInput.path = path.join(root,currentActionInput.path);
 			}
+			continue;
+		}else if(line.trim().startsWith('---')){
+			contentFlag = !contentFlag;
+		}else if(contentFlag){
+			currentActionInput = currentActionInput || {};
+			currentActionInput.content = currentActionInput.content || '';
+			currentActionInput.content += line + '\n';
+		}
+		if(currentThought !== null && currentAction !== null && currentActionInput !== null && !contentFlag){
+			const actionObj = {
+				thought: currentThought,
+				action: currentAction,
+				actionInput: currentActionInput,
+			};
+
+			actions.push(actionObj);
+			currentThought = null;
+			currentAction = null;
+			currentActionInput = null;
+		}
 	}
 
 	return actions;
