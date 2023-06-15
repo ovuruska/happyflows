@@ -1,7 +1,7 @@
 {
   "name": "happyflows",
-  "version": "1.0.2",
-  "description": "HappyFlows: An intuitive, prompt-driven project bootstrapping CLI tool developed in NodeJS, designed to simplify and streamline your project initialization process.",
+  "version": "2.0.0",
+  "description": "HappyFlows: An intuitive, prompt-driven code generation CLI developed in NodeJS, designed to simplify and streamline your project initialization process.",
   "type": "module",
   "scripts": {
     "start": "node src/index.js",
@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fortaine/fetch-event-source": "^3.0.6",
     "configstore": "^6.0.0",
     "glob": "^10.2.7",
     "inquirer": "^7.3.3",

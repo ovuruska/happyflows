@@ -2,7 +2,6 @@
 import yargs from 'yargs';
 import {hideBin} from 'yargs/helpers';
 import inquirer from 'inquirer';
-import {softwareEngineer} from './prompts/program.prompt.js';
 import {OpenaiService} from "./services/open-ai.service.js";
 import loading from "loading-cli";
 import {loadingArray} from "./loading.js";
