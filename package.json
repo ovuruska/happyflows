@@ -1,6 +1,6 @@
 {
   "name": "happyflows",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "HappyFlows: An intuitive, prompt-driven code generation CLI developed in NodeJS, designed to simplify and streamline your project initialization process.",
   "type": "module",
   "scripts": {

@@ -11,6 +11,7 @@ import {loginCommand} from "./commands/login.js";
 import ConfigStore from "configstore";
 import {VectorDbService} from "./services/vector-db.service.js";
 import fs from "fs";
+import {settingsCommand} from "./commands/settings.js";
 
 const config = new ConfigStore('happyflow');
 
@@ -45,13 +46,13 @@ yargs(hideBin(process.argv))
 			}} = await vectorDbService.query(embedding);
 			const {promptFile} = metadata;
 			const {prompt} = await import(promptFile);
-
 			const messages = [{
 				role: "system", content:prompt
 			}, {
 				role: "user", content: program
 			}];
-			response = await openAiService.getCompletion(messages);
+			const model = config.get("model") || "gpt-3.5-turbo";
+			response = await openAiService.getCompletion(messages,model);
 
 		} catch (e) {
 			console.error(e);
@@ -71,6 +72,8 @@ yargs(hideBin(process.argv))
 		executeActions(actions);
 		creatingFilesLoad.stop();
 	})
+	.command('settings', 'manage your settings', () => {
+	}, settingsCommand)
 
 	.option('verbose', {
 		alias: 'v', type: 'boolean', description: 'Run with verbose logging',
