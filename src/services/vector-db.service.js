@@ -25,7 +25,8 @@ export class VectorDbService {
 
 
 		const codexPath = path.join(__dirname, "..", "codex");
-		const embeddingFiles = globSync(codexPath+"/**/*.embedding.json");
+		const embeddingFilesGlob = path.join(codexPath,"**","*.embedding.json");
+		const embeddingFiles = globSync(embeddingFilesGlob);
 
 		return Promise.all(embeddingFiles.map(async (embeddingFile) => {
 			const embeddingData = JSON.parse(await readFileSync(embeddingFile, 'utf-8'));
