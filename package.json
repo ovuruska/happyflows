@@ -39,5 +39,10 @@
     "testMatch": [
       "**/test/**/*.test.*"
     ]
+  },
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
   }
 }
