@@ -22,10 +22,7 @@ export class VectorDbService {
 		if (!await this.index.isIndexCreated()) {
 			await this.index.createIndex();
 		}
-
-
-		const codexPath = path.join(__dirname, "..", "codex");
-		const embeddingFilesGlob = path.join(codexPath,"**","*.embedding.json");
+		const embeddingFilesGlob = __dirname + "../../**/*.embedding.json";
 		const embeddingFiles = globSync(embeddingFilesGlob);
 
 		return Promise.all(embeddingFiles.map(async (embeddingFile) => {
